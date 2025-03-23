@@ -1,7 +1,6 @@
 from flask import Flask
 from flask_restx import Api
 from app.api.v1.endpoints.users import ns as users_ns
-from app.api.v1.endpoints.places import ns as places_ns
 from app.api.v1.endpoints.reviews import ns as reviews_ns
 from app.api.v1.endpoints.amenities import ns as amenities_ns
 from app.api.v1.endpoints.cities import ns as cities_ns
