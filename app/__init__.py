@@ -1,7 +1,7 @@
 from flask import Flask
 from .api.v1 import api as api_blueprint
 from .business_logic import user_service, place_service, review_service, amenity_service, city_service, country_service
-from .persistence.memory_repository import MemoryRepository
+from app.persistence.memory_repository import MemoryRepository
 
 # Initialize the Flask app
 app = Flask(__name__)
