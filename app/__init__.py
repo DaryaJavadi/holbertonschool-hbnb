@@ -1,6 +1,6 @@
 from flask import Flask
 from app.part2.api.v1 import api as api_blueprint
-from app.part2.api.business_logic import user_service, place_service, review_service, amenity_service, city_service, country_service
+from app.part2.api.business_logic import user_service, review_service, amenity_service, city_service, country_service
 from app.part2.api.persistence.memory_repository import MemoryRepository  # Ensure the file exists at app/persistence/memory_repository.py
 
 # Initialize the Flask app
@@ -23,7 +23,6 @@ repository = MemoryRepository()
 
 # Create your business logic classes
 user_service = user_service.UserService(repository)
-place_service = place_service.PlaceService(repository)
 review_service = review_service.ReviewService(repository)
 amenity_service = amenity_service.AmenityService(repository)
 city_service = city_service.CityService(repository)
