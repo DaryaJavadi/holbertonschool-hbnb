@@ -1,10 +1,19 @@
 from flask import Flask
-from .api.v1 import api as api_blueprint
-from .business_logic import user_service, place_service, review_service, amenity_service, city_service, country_service
-from app.persistence.memory_repository import MemoryRepository
+from app.api.v1 import api as api_blueprint
+from app.business_logic import user_service, place_service, review_service, amenity_service, city_service, country_service
+from app.persistence.memory_repository import MemoryRepository  # Ensure the file exists at app/persistence/memory_repository.py
 
 # Initialize the Flask app
 app = Flask(__name__)
+from flask import Blueprint
+
+# Create a Blueprint instance
+api_bp = Blueprint('api_v1', __name__)
+
+# Define routes here
+@api_bp.route('/status', methods=['GET'])
+def status():
+    return {"status": "OK"}
 
 # Register the API blueprint
 app.register_blueprint(api_blueprint, url_prefix='/api/v1')
@@ -22,7 +31,7 @@ country_service = country_service.CountryService(repository)
 
 # Add more initialization as needed
 from flask import Flask
-from app.api.v1.api import api_bp
+from app.api.v1 import api as api_bp
 
 def create_app():
     app = Flask(__name__)
