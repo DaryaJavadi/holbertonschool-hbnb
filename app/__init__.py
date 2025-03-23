@@ -1,7 +1,7 @@
 from flask import Flask
-from app.api.v1 import api as api_blueprint
-from app.business_logic import user_service, place_service, review_service, amenity_service, city_service, country_service
-from app.persistence.memory_repository import MemoryRepository  # Ensure the file exists at app/persistence/memory_repository.py
+from app.part2.api.v1 import api as api_blueprint
+from app.part2.api.business_logic import user_service, place_service, review_service, amenity_service, city_service, country_service
+from app.part2.api.persistence.memory_repository import MemoryRepository  # Ensure the file exists at app/persistence/memory_repository.py
 
 # Initialize the Flask app
 app = Flask(__name__)
@@ -30,9 +30,6 @@ city_service = city_service.CityService(repository)
 country_service = country_service.CountryService(repository)
 
 # Add more initialization as needed
-from flask import Flask
-from app.api.v1 import api as api_bp
-
 def create_app():
     app = Flask(__name__)
     app.register_blueprint(api_bp, url_prefix='/api/v1')

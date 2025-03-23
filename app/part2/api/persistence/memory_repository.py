@@ -1,5 +1,5 @@
-from app.models import User, Place, Review, Amenity, City, Country
-from app.persistence.repository import Repository
+from app.part2.api.models import User, Place, Review, Amenity, City, Country
+from app.part2.api.persistence.repository import Repository
 import uuid
 
 class MemoryRepository(Repository):

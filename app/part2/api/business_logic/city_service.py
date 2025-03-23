@@ -1,5 +1,5 @@
-from app.persistence.memory_repository import MemoryRepository
-from app.models import City
+from app.part2.api.persistence.memory_repository import MemoryRepository
+from app.part2.api.models import City
 
 class CityService:
     @staticmethod

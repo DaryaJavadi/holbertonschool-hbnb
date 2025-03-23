@@ -1,5 +1,5 @@
 from flask_restx import Resource, fields, Namespace
-from app.business_logic.amenity_service import AmenityService
+from app.part2.api.business_logic.amenity_service import AmenityService
 
 api = Namespace('amenities', description='Amenity operations')
 

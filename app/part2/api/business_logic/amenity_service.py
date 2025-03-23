@@ -1,5 +1,5 @@
-from app.persistence.memory_repository import MemoryRepository
-from app.models import Amenity
+from app.part2.api.persistence.memory_repository import MemoryRepository
+from app.part2.api.models import Amenity
 
 class AmenityService:
     @staticmethod

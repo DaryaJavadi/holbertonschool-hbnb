@@ -1,5 +1,5 @@
-from app.persistence.memory_repository import MemoryRepository
-from app.models import Country
+from app.part2.api.persistence.memory_repository import MemoryRepository
+from app.part2.api.models import Country
 
 class CountryService:
     @staticmethod

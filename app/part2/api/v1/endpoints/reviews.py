@@ -1,5 +1,5 @@
 from flask_restx import Resource, fields, Namespace
-from app.business_logic.review_service import ReviewService
+from app.part2.api.business_logic.review_service import ReviewService
 
 api = Namespace('reviews', description='Review operations')
 

@@ -1,6 +1,6 @@
 from flask import Flask
-from app.api.v1 import api as api_blueprint
-from app.persistence.database import Database
+from app.part2.api.v1 import api as api_blueprint
+from app.part2.api.persistence.database import Database
 from config import DevelopmentConfig
 
 # Initialize Flask app

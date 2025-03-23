@@ -1,5 +1,5 @@
 from flask_restx import Resource, fields, Namespace
-from app.business_logic.city_service import CityService
+from app.part2.api.business_logic.city_service import CityService
 
 api = Namespace('cities', description='City operations')
 
