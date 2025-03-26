@@ -1,21 +1,6 @@
-from flask import Flask
-from app.part2.api.v1 import api as api_blueprint
-from app.part2.api.persistence.database import Database
-from config import DevelopmentConfig
+from app import create_app
 
-# Initialize Flask app
-app = Flask(__name__)
-
-# Initialize the database
-db = Database(app)
-
-# Register API blueprints
-app.register_blueprint(api_blueprint, url_prefix='/api/v1')
-app.config.from_object(DevelopmentConfig)
-
-# Start the application
-if __name__ == "__main__":
-    app.run(debug=True)
+app = create_app()
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host="0.0.0.0", port=5000, debug=True)

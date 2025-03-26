@@ -1,21 +1,32 @@
-from flask_restx import Resource, fields, Namespace
-from app.part2.api.business_logic.city_service import CityService
+from flask_restx import Namespace, Resource
 
-api = Namespace('cities', description='City operations')
+city_ns = Namespace("cities", description="Operations on cities")
 
-city_model = api.model('City', {
-    'id': fields.String(required=True, description='City ID'),
-    'name': fields.String(required=True, description='City Name'),
-})
-
+@city_ns.route("/")
 class CityList(Resource):
     def get(self):
-        cities = CityService.get_all_cities()
-        return [city.to_dict() for city in cities]
+        return {
+  "cities": [
+    {
+      "id": 1,
+      "name": "San Francisco",
+      "state": "California",
+      "country_id": 1,
+      "population": 883305,
+      "created_at": "2025-03-23T08:00:00",
+      "updated_at": "2025-03-23T08:00:00"
+    },
+    {
+      "id": 2,
+      "name": "Paris",
+      "state": "Île-de-France",
+      "country_id": 2,
+      "population": 2148327,
+      "created_at": "2025-03-22T10:00:00",
+      "updated_at": "2025-03-22T10:00:00"
+    }
+  ]
+}
 
-class City(Resource):
-    def get(self, city_id):
-        city = CityService.get_city_by_id(city_id)
-        if city:
-            return city.to_dict()
-        api.abort(404, "City not found")
+    def post(self):
+        return {"message": "Create a new city"}

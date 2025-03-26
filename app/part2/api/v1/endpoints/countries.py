@@ -1,21 +1,28 @@
-from flask_restx import Resource, fields, Namespace
-from app.part2.api.business_logic.country_service import CountryService
+from flask_restx import Namespace, Resource
 
-api = Namespace('countries', description='Country operations')
+country_ns = Namespace("countries", description="Operations on countries")
 
-country_model = api.model('Country', {
-    'id': fields.String(required=True, description='Country ID'),
-    'name': fields.String(required=True, description='Country Name'),
-})
-
+@country_ns.route("/")
 class CountryList(Resource):
     def get(self):
-        countries = CountryService.get_all_countries()
-        return [country.to_dict() for country in countries]
+        return {
+  "countries": [
+    {
+      "id": 1,
+      "name": "United States",
+      "code": "US",
+      "created_at": "2025-03-23T08:00:00",
+      "updated_at": "2025-03-23T08:00:00"
+    },
+    {
+      "id": 2,
+      "name": "France",
+      "code": "FR",
+      "created_at": "2025-03-22T09:00:00",
+      "updated_at": "2025-03-22T09:00:00"
+    }
+  ]
+}
 
-class Country(Resource):
-    def get(self, country_id):
-        country = CountryService.get_country_by_id(country_id)
-        if country:
-            return country.to_dict()
-        api.abort(404, "Country not found")
+    def post(self):
+        return {"message": "Create a new country"}

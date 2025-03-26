@@ -1,21 +1,35 @@
-from flask_restx import Resource, fields, Namespace
-from app.part2.api.business_logic.amenity_service import AmenityService
+from flask_restx import Namespace, Resource
 
-api = Namespace('amenities', description='Amenity operations')
+amenity_ns = Namespace("amenities", description="Operations on amenities")
 
-amenity_model = api.model('Amenity', {
-    'id': fields.String(required=True, description='Amenity ID'),
-    'name': fields.String(required=True, description='Amenity Name'),
-})
-
+@amenity_ns.route("/")
 class AmenityList(Resource):
     def get(self):
-        amenities = AmenityService.get_all_amenities()
-        return [amenity.to_dict() for amenity in amenities]
+        return {
+  "amenities": [
+    {
+      "id": 1,
+      "name": "Wi-Fi",
+      "description": "High-speed internet available throughout the property",
+      "created_at": "2025-03-23T10:00:00",
+      "updated_at": "2025-03-23T10:00:00"
+    },
+    {
+      "id": 2,
+      "name": "Air Conditioning",
+      "description": "Comfortable, adjustable temperature control",
+      "created_at": "2025-03-22T09:30:00",
+      "updated_at": "2025-03-22T09:30:00"
+    },
+    {
+      "id": 3,
+      "name": "Swimming Pool",
+      "description": "Outdoor pool open from 9am to 6pm",
+      "created_at": "2025-03-21T12:00:00",
+      "updated_at": "2025-03-21T12:00:00"
+    }
+  ]
+}
 
-class Amenity(Resource):
-    def get(self, amenity_id):
-        amenity = AmenityService.get_amenity_by_id(amenity_id)
-        if amenity:
-            return amenity.to_dict()
-        api.abort(404, "Amenity not found")
+    def post(self):
+        return {"message": "Create a new amenity"}
